@@ -37,7 +37,7 @@ namespace Fungus
                 return targetInputField.name;
             }
 
-            return "Error: no targetInputField set.";
+            return "None";
         }
 
         #endregion

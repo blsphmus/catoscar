@@ -114,7 +114,18 @@ namespace Fungus
             for(int i = 0; i < list.Count; ++i)
             {
                 var callback = list[i] as TypedDelegate<T>;
-                callback?.Invoke(evt);
+
+                if(callback != null)
+                {
+                    try
+                    {
+                        callback(evt);
+                    }
+                    catch(Exception gotcha)
+                    {
+                        Log(gotcha.Message);
+                    }
+                }
             }
         }
 

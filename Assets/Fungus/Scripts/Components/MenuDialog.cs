@@ -7,7 +7,6 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System.Linq;
 using MoonSharp.Interpreter;
-using Fungus.Lua;
 
 namespace Fungus
 {
@@ -61,11 +60,7 @@ namespace Fungus
             if (ActiveMenuDialog == null)
             {
                 // Use first Menu Dialog found in the scene (if any)
-            #if UNITY_6000
-                var md = GameObject.FindFirstObjectByType<MenuDialog>();
-            #else
                 var md = GameObject.FindObjectOfType<MenuDialog>();
-            #endif
                 if (md != null)
                 {
                     ActiveMenuDialog = md;
@@ -109,15 +104,11 @@ namespace Fungus
         // This method will automatically instantiate one if none exists.
         protected virtual void CheckEventSystem()
         {
-        #if UNITY_6000
-            EventSystem eventSystem = GameObject.FindFirstObjectByType<EventSystem>();
-        #else
             EventSystem eventSystem = GameObject.FindObjectOfType<EventSystem>();
-        #endif
             if (eventSystem == null)
             {
                 // Auto spawn an Event System from the prefab
-                GameObject prefab = Resources.Load<GameObject>(FungusConstants.EventSystemPrefabName);
+                GameObject prefab = Resources.Load<GameObject>("Prefabs/EventSystem");
                 if (prefab != null)
                 {
                     GameObject go = Instantiate(prefab) as GameObject;

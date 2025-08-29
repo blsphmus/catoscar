@@ -137,10 +137,7 @@ namespace Fungus.EditorUtils
 
             for (int i = 0; i < 2; ++i)
             {
-                Vector3 newPos = Handles.FreeMoveHandle(handles[i],
-#if !UNITY_2022_1_OR_NEWER
-                                                        Quaternion.identity,
-#endif
+                var fmh_141_57_638920979196915197 = Quaternion.identity; Vector3 newPos = Handles.FreeMoveHandle(handles[i],
                                                         HandleUtility.GetHandleSize(pos) * 0.1f,
                                                         Vector3.zero,
 #if UNITY_5_6_OR_NEWER

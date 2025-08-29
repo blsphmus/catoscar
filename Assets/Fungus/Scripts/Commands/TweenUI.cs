@@ -4,7 +4,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Fungus;
-using Fungus.DentedPixel;
 
 namespace Fungus
 {

@@ -8,7 +8,7 @@ using System.Linq;
 using MoonSharp.Interpreter;
 using MoonSharp.VsCodeDebugger;
 
-namespace Fungus.Lua
+namespace Fungus
 {
     /// <summary>
     /// Wrapper for a MoonSharp Lua Script instance.
@@ -154,11 +154,7 @@ namespace Fungus.Lua
         /// </summary>
         public static LuaEnvironment GetLua()
         {
-        #if UNITY_6000
-            var luaEnv = GameObject.FindFirstObjectByType<LuaEnvironment>();
-        #else
             var luaEnv = GameObject.FindObjectOfType<LuaEnvironment>();
-        #endif
             if (luaEnv == null)
             {
                 GameObject prefab = Resources.Load<GameObject>("Prefabs/LuaEnvironment");

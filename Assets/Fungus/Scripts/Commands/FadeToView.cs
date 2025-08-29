@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using Fungus.DentedPixel;
 
 namespace Fungus
 {
@@ -56,11 +55,7 @@ namespace Fungus
             targetCamera = Camera.main;
             if (targetCamera == null)
             {
-            #if UNITY_6000
-                targetCamera = GameObject.FindFirstObjectByType<Camera>();
-            #else
                 targetCamera = GameObject.FindObjectOfType<Camera>();
-            #endif
             }
         }
 

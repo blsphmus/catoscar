@@ -88,8 +88,6 @@ namespace Fungus.EditorUtils
             Rect searchRect = new Rect(0, 0, rect.width, EditorStyles.toolbar.fixedHeight);
             Rect scrollRect = Rect.MinMaxRect(0, searchRect.yMax, rect.xMax, rect.yMax);
 
-            GUI.skin.label.richText = true;
-
             HandleKeyboard();
             DrawSearch(searchRect);
             DrawSelectionArea(scrollRect);

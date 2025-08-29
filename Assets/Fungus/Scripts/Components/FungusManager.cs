@@ -13,7 +13,6 @@ namespace Fungus
     [RequireComponent(typeof(MusicManager))]
     [RequireComponent(typeof(EventDispatcher))]
     [RequireComponent(typeof(GlobalVariables))]
-    [RequireComponent(typeof(MainAudioMixer))]
 #if UNITY_5_3_OR_NEWER
     [RequireComponent(typeof(SaveManager))]
     [RequireComponent(typeof(NarrativeLog))]
@@ -26,20 +25,14 @@ namespace Fungus
 
         void Awake()
         {
-            if (instance == null)
-                instance = this;
-
             CameraManager = GetComponent<CameraManager>();
             MusicManager = GetComponent<MusicManager>();
             EventDispatcher = GetComponent<EventDispatcher>();
             GlobalVariables = GetComponent<GlobalVariables>();
-            MainAudioMixer = GetComponent<MainAudioMixer>();
 #if UNITY_5_3_OR_NEWER
             SaveManager = GetComponent<SaveManager>();
             NarrativeLog = GetComponent<NarrativeLog>();
-#endif
-            MainAudioMixer.Init();
-            MusicManager.Init();
+            #endif
         }
 
         /// <summary>
@@ -76,8 +69,6 @@ namespace Fungus
         /// Gets the global variable singleton instance.
         /// </summary>
         public GlobalVariables GlobalVariables { get; private set; }
-
-        public MainAudioMixer MainAudioMixer { get; private set; }
 
 #if UNITY_5_3_OR_NEWER
         /// <summary>

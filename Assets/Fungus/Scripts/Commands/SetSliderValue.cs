@@ -7,11 +7,11 @@ using UnityEngine.UI;
 namespace Fungus
 {
     /// <summary>
-    /// Sets or Gets the value property of a slider object.
+    /// Sets the value property of a slider object.
     /// </summary>
     [CommandInfo("UI",
-                 "Set or Get Slider Value",
-                 "Sets or Gets the value property of a slider object")]
+                 "Set Slider Value",
+                 "Sets the value property of a slider object")]
     public class SetSliderValue : Command 
     {
         [Tooltip("Target slider object to set the value on")]
@@ -20,25 +20,13 @@ namespace Fungus
         [Tooltip("Float value to set the slider value to.")]
         [SerializeField] protected FloatData value;
 
-        protected BaseVariableProperty.GetSet getOrSet = BaseVariableProperty.GetSet.Set;
-
         #region Public members
 
         public override void OnEnter() 
         {
             if (slider != null)
             {
-                switch (getOrSet)
-                {
-                case BaseVariableProperty.GetSet.Get:
-                    value.Value = slider.value;
-                    break;
-                case BaseVariableProperty.GetSet.Set:
-                    slider.value = value.Value;
-                    break;
-                default:
-                    break;
-                }
+                slider.value = value;
             }
 
             Continue();
@@ -56,9 +44,7 @@ namespace Fungus
                 return "Error: Slider object not selected";
             }
 
-            return  getOrSet == BaseVariableProperty.GetSet.Set ? 
-                slider.name + " = " + value.GetDescription() :
-                value.GetDescription() + " = " + slider.name;
+            return slider.name + " = " + value.GetDescription();
         }
 
         public override bool HasReference(Variable variable)

@@ -14,7 +14,6 @@ namespace Fungus
                  "Rotate Add", 
                  "Rotates a game object by the specified angles over time.")]
     [AddComponentMenu("")]
-    [System.Obsolete("Deprecated, consider using the LeanTween based Tween command instead.")]
     [ExecuteInEditMode]
     public class RotateAdd : iTweenCommand
     {

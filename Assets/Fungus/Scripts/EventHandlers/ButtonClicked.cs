@@ -40,7 +40,7 @@ namespace Fungus
                 return targetButton.name;
             }
 
-            return "Error: no targetButton set.";
+            return "None";
         }
 
         #endregion

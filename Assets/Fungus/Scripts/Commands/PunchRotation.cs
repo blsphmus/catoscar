@@ -14,7 +14,6 @@ namespace Fungus
                  "Punch Rotation", 
                  "Applies a jolt of force to a GameObject's rotation and wobbles it back to its initial rotation.")]
     [AddComponentMenu("")]
-    [System.Obsolete("Deprecated, consider using the LeanTween based Tween command instead.")]
     [ExecuteInEditMode]
     public class PunchRotation : iTweenCommand
     {

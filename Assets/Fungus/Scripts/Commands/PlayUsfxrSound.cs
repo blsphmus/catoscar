@@ -4,7 +4,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Fungus.Sfxr;
 
 ﻿namespace Fungus 
 {

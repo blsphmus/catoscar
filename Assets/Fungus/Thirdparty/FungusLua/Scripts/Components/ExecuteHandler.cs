@@ -10,7 +10,7 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
-namespace Fungus.Lua
+namespace Fungus
 {
     [Flags]
     public enum ExecuteMethod

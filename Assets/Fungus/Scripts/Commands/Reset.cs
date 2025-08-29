@@ -24,7 +24,7 @@ namespace Fungus
 
         public override void OnEnter()
         {
-            GetFlowchart().ResetFlowchart(resetCommands, resetVariables);
+            GetFlowchart().Reset(resetCommands, resetVariables);
             Continue();
         }
 

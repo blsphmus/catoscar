@@ -3,7 +3,7 @@
 
 ﻿using UnityEngine;
 
-namespace Fungus.Lua
+namespace Fungus
 {
     /// <summary>
     /// Factory class to create new instances of common POD value types used by Unity.

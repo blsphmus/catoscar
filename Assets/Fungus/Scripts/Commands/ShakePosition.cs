@@ -14,7 +14,6 @@ namespace Fungus
                  "Shake Position", 
                  "Randomly shakes a GameObject's position by a diminishing amount over time.")]
     [AddComponentMenu("")]
-    [System.Obsolete("Deprecated, consider using the LeanTween based Tween command instead.")]
     [ExecuteInEditMode]
     public class ShakePosition : iTweenCommand
     {

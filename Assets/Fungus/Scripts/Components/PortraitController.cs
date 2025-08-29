@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using MoonSharp.Interpreter;
-using Fungus.DentedPixel;
 
 namespace Fungus
 {

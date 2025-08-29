@@ -67,11 +67,7 @@ namespace Fungus
             var savePointData = Create(_savePointKey, _savePointDescription, _sceneName);
 
             // Look for a SaveData component in the scene to populate the save data items.
-        #if UNITY_6000
-            var saveData = GameObject.FindFirstObjectByType<SaveData>();
-        #else
             var saveData = GameObject.FindObjectOfType<SaveData>();
-        #endif
             if (saveData != null)
             {
                 saveData.Encode(savePointData.SaveDataItems);
@@ -101,11 +97,7 @@ namespace Fungus
                 SceneManager.sceneLoaded -= onSceneLoadedAction;
 
                 // Look for a SaveData component in the scene to process the save data items.
-            #if UNITY_6000
-                var saveData = GameObject.FindFirstObjectByType<SaveData>();
-            #else
                 var saveData = GameObject.FindObjectOfType<SaveData>();
-            #endif
                 if (saveData != null)
                 {
                     saveData.Decode(savePointData.SaveDataItems);

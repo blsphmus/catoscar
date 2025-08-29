@@ -53,58 +53,15 @@ namespace Fungus
         // True when a voiceover clip is playing
         protected bool playingVoiceover = false;
 
-        protected AudioSource lastUsedAudioSource;
-        protected SayDialog attachedSayDialog;
+        public bool IsPlayingVoiceOver { get { return playingVoiceover; } }
 
         // Time when current beep will have finished playing
         protected float nextBeepTime;
 
-        [Tooltip("If true, legacy voiceover logic used and any audio clips will be played through the targetAudioSource," +
-            " same one that sfx and beeps are played through.")]
-        [SerializeField] protected bool useLegacyAudioLogic = false;
-
-        protected virtual AudioSource VoiceOverAudioSource
-        {
-            get
-            {
-                if (useLegacyAudioLogic)
-                    return targetAudioSource;
-
-                AudioSource voiceOverSource = FungusManager.Instance.MusicManager.DefaultVoiceAudioSource;
-
-                if (attachedSayDialog != null &&
-                    attachedSayDialog.SpeakingCharacter != null &&
-                    attachedSayDialog.SpeakingCharacter.VoiceAudioSource != null)
-                {
-                    voiceOverSource = attachedSayDialog.SpeakingCharacter.VoiceAudioSource;
-                }
-
-                return voiceOverSource;
-            }
-        }
-        protected virtual AudioSource EffectAudioSource
-        {
-            get
-            {
-                if (useLegacyAudioLogic)
-                    return targetAudioSource;
-
-                AudioSource voiceOverSource = FungusManager.Instance.MusicManager.WriterSoundEffectAudioSource;
-
-                if (attachedSayDialog != null &&
-                    attachedSayDialog.SpeakingCharacter != null &&
-                    attachedSayDialog.SpeakingCharacter.EffectAudioSource != null)
-                {
-                    voiceOverSource = attachedSayDialog.SpeakingCharacter.EffectAudioSource;
-                }
-
-                return voiceOverSource;
-            }
-        }
 
         public float GetSecondsRemaining()
         {
-            if (playingVoiceover)
+            if (IsPlayingVoiceOver)
             {
                 return targetAudioSource.isPlaying ? targetAudioSource.clip.length - targetAudioSource.time : 0f;
             }
@@ -122,66 +79,58 @@ namespace Fungus
         protected virtual void Awake()
         {
             // Need to do this in Awake rather than Start due to init order issues
-            if (useLegacyAudioLogic)
+            if (targetAudioSource == null)
             {
+                targetAudioSource = GetComponent<AudioSource>();
                 if (targetAudioSource == null)
                 {
-                    targetAudioSource = GetComponent<AudioSource>();
-                    if (targetAudioSource == null)
-                    {
-                        targetAudioSource = gameObject.AddComponent<AudioSource>();
-                        targetAudioSource.outputAudioMixerGroup = FungusManager.Instance.MainAudioMixer.SFXGroup;
-                    }
+                    targetAudioSource = gameObject.AddComponent<AudioSource>();
                 }
-
-                targetAudioSource.volume = 0f;
             }
 
-            attachedSayDialog = GetComponent<SayDialog>();
+            targetAudioSource.volume = 0f;
         }
 
         protected virtual void Play(AudioClip audioClip)
         {
-            if (EffectAudioSource == null ||
+            if (targetAudioSource == null ||
                 (audioMode == AudioMode.SoundEffect && soundEffect == null && audioClip == null) ||
                 (audioMode == AudioMode.Beeps && beepSounds.Count == 0))
             {
                 return;
             }
 
-            lastUsedAudioSource = EffectAudioSource;
-
             playingVoiceover = false;
-            lastUsedAudioSource.volume = 0f;
+            targetAudioSource.volume = 0f;
             targetVolume = volume;
 
             if (audioClip != null)
             {
                 // Voice over clip provided
-                lastUsedAudioSource.clip = audioClip;
-                lastUsedAudioSource.loop = loop;
-                lastUsedAudioSource.Play();
+                targetAudioSource.clip = audioClip;
+                targetAudioSource.loop = loop;
+                targetAudioSource.Play();
             }
             else if (audioMode == AudioMode.SoundEffect &&
                      soundEffect != null)
             {
                 // Use sound effects defined in WriterAudio
-                lastUsedAudioSource.clip = soundEffect;
-                lastUsedAudioSource.loop = loop;
-                lastUsedAudioSource.Play();
+                targetAudioSource.clip = soundEffect;
+                targetAudioSource.loop = loop;
+                targetAudioSource.Play();
             }
             else if (audioMode == AudioMode.Beeps)
             {
                 // Use beeps defined in WriterAudio
-                lastUsedAudioSource.clip = null;
-                lastUsedAudioSource.loop = false;
+                targetAudioSource.clip = null;
+                targetAudioSource.loop = false;
                 playBeeps = true;
             }
         }
 
         protected virtual void Pause()
         {
-            if (lastUsedAudioSource == null)
+            if (targetAudioSource == null)
             {
                 return;
             }
@@ -192,7 +141,7 @@ namespace Fungus
 
         protected virtual void Stop()
         {
-            if (lastUsedAudioSource == null)
+            if (targetAudioSource == null)
             {
                 return;
             }
@@ -200,16 +149,14 @@ namespace Fungus
             // There's an audible click if you call audioSource.Stop() so instead we just switch off
             // looping and let the audio stop automatically at the end of the clip
             targetVolume = 0f;
-            lastUsedAudioSource.loop = false;
+            targetAudioSource.loop = false;
             playBeeps = false;
             playingVoiceover = false;
-
-            //TODO force speaking character to stop
         }
 
         protected virtual void Resume()
         {
-            if (lastUsedAudioSource == null)
+            if (targetAudioSource == null)
             {
                 return;
             }
@@ -219,8 +166,7 @@ namespace Fungus
 
         protected virtual void Update()
         {
-            if(lastUsedAudioSource != null)
-                lastUsedAudioSource.volume = Mathf.MoveTowards(lastUsedAudioSource.volume, targetVolume, Time.deltaTime * 5f);
+            targetAudioSource.volume = Mathf.MoveTowards(targetAudioSource.volume, targetVolume, Time.deltaTime * 5f);
         }
 
         #region IWriterListener implementation
@@ -278,21 +224,19 @@ namespace Fungus
 
             if (playBeeps && beepSounds.Count > 0)
             {
-                lastUsedAudioSource = EffectAudioSource;
-
-                if (!lastUsedAudioSource.isPlaying)
+                if (!targetAudioSource.isPlaying)
                 {
                     if (nextBeepTime < Time.realtimeSinceStartup)
                     {
-                        lastUsedAudioSource.clip = beepSounds[Random.Range(0, beepSounds.Count)];
+                        targetAudioSource.clip = beepSounds[Random.Range(0, beepSounds.Count)];
 
-                        if (lastUsedAudioSource.clip != null)
+                        if (targetAudioSource.clip != null)
                         {
-                            lastUsedAudioSource.loop = false;
+                            targetAudioSource.loop = false;
                             targetVolume = volume;
-                            lastUsedAudioSource.Play();
+                            targetAudioSource.Play();
 
-                            float extend = lastUsedAudioSource.clip.length;
+                            float extend = targetAudioSource.clip.length;
                             nextBeepTime = Time.realtimeSinceStartup + extend;
                         }
                     }
@@ -300,22 +244,20 @@ namespace Fungus
             }
         }
 
-        public virtual void OnVoiceover(AudioClip voiceoverClip)
+        public virtual void OnVoiceover(AudioClip voiceOverClip)
         {
-            if (VoiceOverAudioSource == null)
+            if (targetAudioSource == null)
             {
                 return;
             }
 
             playingVoiceover = true;
 
-            lastUsedAudioSource = VoiceOverAudioSource;
-
-            lastUsedAudioSource.volume = volume;
+            targetAudioSource.volume = volume;
             targetVolume = volume;
-            lastUsedAudioSource.loop = false;
-            lastUsedAudioSource.clip = voiceoverClip;
-            lastUsedAudioSource.Play();
+            targetAudioSource.loop = false;
+            targetAudioSource.clip = voiceOverClip;
+            targetAudioSource.Play();
         }
 
         public void OnAllWordsWritten()

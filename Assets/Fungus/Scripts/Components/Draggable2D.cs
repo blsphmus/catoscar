@@ -5,7 +5,6 @@
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using System.Collections.Generic;
-using Fungus.DentedPixel;
 
 namespace Fungus
 {
@@ -107,13 +106,9 @@ namespace Fungus
             beingDragged = true;
 
             // Offset the object so that the drag is anchored to the exact point where the user clicked it
-
-#if ENABLE_INPUT_SYSTEM
-            var mousePos = UnityEngine.InputSystem.Mouse.current?.position.ReadValue() ?? Vector2.zero;
-#else
-            var mousePos = Input.mousePosition;
-#endif
-            delta = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f)) - transform.position;
+            float x = Input.mousePosition.x;
+            float y = Input.mousePosition.y;
+            delta = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10f)) - transform.position;
             delta.z = 0f;
 
             startingPosition = transform.position;
@@ -130,13 +125,8 @@ namespace Fungus
                 return;
             }
 
-#if ENABLE_INPUT_SYSTEM
-            var mousePos = UnityEngine.InputSystem.Mouse.current?.position.ReadValue() ?? Vector2.zero;
-#else
-            var mousePos = Input.mousePosition;
-#endif
-            float x = mousePos.x;
-            float y = mousePos.y;
+            float x = Input.mousePosition.x;
+            float y = Input.mousePosition.y;
             float z = transform.position.z;
 
             newPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10f)) - delta;

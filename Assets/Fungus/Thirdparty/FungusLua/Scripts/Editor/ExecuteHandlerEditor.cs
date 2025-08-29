@@ -9,7 +9,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fungus.Lua
+namespace Fungus
 {
     [CustomEditor(typeof(ExecuteHandler))]
     public class ExecuteHandlerEditor : Editor

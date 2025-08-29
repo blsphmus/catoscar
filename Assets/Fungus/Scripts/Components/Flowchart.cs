@@ -8,7 +8,6 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Fungus.Lua;
 
 namespace Fungus
 {
@@ -121,15 +120,11 @@ namespace Fungus
                 return;
             }
             
-        #if UNITY_6000
-            EventSystem eventSystem = GameObject.FindFirstObjectByType<EventSystem>();
-        #else
             EventSystem eventSystem = GameObject.FindObjectOfType<EventSystem>();
-        #endif
             if (eventSystem == null)
             {
                 // Auto spawn an Event System from the prefab
-                GameObject prefab = Resources.Load<GameObject>(FungusConstants.EventSystemPrefabName);
+                GameObject prefab = Resources.Load<GameObject>("Prefabs/EventSystem");
                 if (prefab != null)
                 {
                     GameObject go = Instantiate(prefab) as GameObject;
@@ -312,11 +307,7 @@ namespace Fungus
         /// </summary>
         public static void BroadcastFungusMessage(string messageName)
         {
-        #if UNITY_6000
-            var eventHandlers = UnityEngine.Object.FindObjectsByType<MessageReceived>(FindObjectsSortMode.None);
-        #else
             var eventHandlers = UnityEngine.Object.FindObjectsOfType<MessageReceived>();
-        #endif
             for (int i = 0; i < eventHandlers.Length; i++)
             {
                 var eventHandler = eventHandlers[i];
@@ -1227,7 +1218,7 @@ namespace Fungus
         /// <summary>
         /// Reset the commands and variables in the Flowchart.
         /// </summary>
-        public virtual void ResetFlowchart(bool resetCommands, bool resetVariables)
+        public virtual void Reset(bool resetCommands, bool resetVariables)
         {
             if (resetCommands)
             {

@@ -26,7 +26,15 @@ namespace Fungus
         {
             if (sourceString != null && outValue != null)
             {
-                double asDouble = System.Convert.ToDouble(sourceString.Value, System.Globalization.CultureInfo.CurrentCulture);
+                double asDouble = 0;
+                try
+                {
+                    asDouble = System.Convert.ToDouble(sourceString.Value, System.Globalization.CultureInfo.CurrentCulture);
+                }
+                catch (System.Exception)
+                {
+                    Debug.LogWarning("Failed to parse as number: " + sourceString.Value);
+                }
 
                 IntegerVariable intOutVar = outValue as IntegerVariable;
                 if (intOutVar != null)

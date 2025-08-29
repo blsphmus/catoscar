@@ -3,7 +3,7 @@
 
 ﻿using UnityEngine;
 
-namespace Fungus.Lua
+namespace Fungus
 {
     /// <summary>
     /// Displays information text at the top left of the screen.

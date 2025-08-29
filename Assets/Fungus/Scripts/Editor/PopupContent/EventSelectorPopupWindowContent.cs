@@ -6,7 +6,6 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Fungus.EditorUtils
 {
@@ -54,17 +53,16 @@ namespace Fungus.EditorUtils
         protected override void PrepareAllItems()
         {
             int i = 0;
-            foreach (var item in EventHandlerTypes)
+            foreach (System.Type type in EventHandlerTypes)
             {
-                var info = EventHandlerEditor.GetEventHandlerInfo(item);
+                EventHandlerInfoAttribute info = EventHandlerEditor.GetEventHandlerInfo(type);
                 if (info != null)
                 {
-                    var obsAttr = item.GetCustomAttribute<System.ObsoleteAttribute>();
-
-                    var fliStr = (info.Category.Length > 0 ? info.Category + CATEGORY_CHAR : "")
-                        + (obsAttr != null ? FungusConstants.UIPrefixForDeprecated_RichText : "")
-                        + info.EventHandlerName;
-                    allItems.Add(new FilteredListItem(i, fliStr, info.HelpText));
+                    allItems.Add(new FilteredListItem(i, (info.Category.Length > 0 ? info.Category + CATEGORY_CHAR : "") + info.EventHandlerName, info.HelpText));
+                }
+                else
+                {
+                    allItems.Add(new FilteredListItem(i, type.Name, info.HelpText));
                 }
 
                 i++;

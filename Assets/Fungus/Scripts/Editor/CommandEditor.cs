@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditorInternal;
-using System.Reflection;
 
 namespace Fungus.EditorUtils
 {
@@ -62,18 +61,10 @@ namespace Fungus.EditorUtils
                 return;
             }
 
-            var commandType = t.GetType();
-
-            CommandInfoAttribute commandInfoAttr = CommandEditor.GetCommandInfo(commandType);
+            CommandInfoAttribute commandInfoAttr = CommandEditor.GetCommandInfo(t.GetType());
             if (commandInfoAttr == null)
             {
                 return;
-            }
-            
-            var obsAttr = commandType.GetCustomAttribute<System.ObsoleteAttribute>();
-            if(obsAttr != null)
-            {
-                EditorGUILayout.HelpBox(obsAttr.Message, MessageType.Warning, true);
             }
 
             GUILayout.BeginVertical(GUI.skin.box);
@@ -139,7 +130,7 @@ namespace Fungus.EditorUtils
 
             // Display help text
             CommandInfoAttribute infoAttr = CommandEditor.GetCommandInfo(t.GetType());
-            if (infoAttr != null && !FungusEditorPreferences.suppressHelpBoxes)
+            if (infoAttr != null)
             {
                 EditorGUILayout.HelpBox(infoAttr.HelpText, MessageType.Info, true);
             }

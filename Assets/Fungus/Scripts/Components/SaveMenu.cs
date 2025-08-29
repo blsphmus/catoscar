@@ -6,7 +6,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Fungus.DentedPixel;
 
 namespace Fungus
 {
