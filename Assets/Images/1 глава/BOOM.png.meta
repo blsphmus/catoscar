@@ -3,8 +3,8 @@ guid: 104e012b98802b348b99a0edf5ef700c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8074795534218528122
-    second: BOOM_0
+      213: 7034660610512690298
+    second: Boom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BOOM_0
+      name: Boom_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68a7ef46e3090ff80800000000000000
-      internalID: -8074795534218528122
+      spriteID: a7c9a05dd8220a160800000000000000
+      internalID: 7034660610512690298
       vertices: []
       indices: 
       edges: []
