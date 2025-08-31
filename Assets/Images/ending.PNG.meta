@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5222f135eba85404686266da0fdd9a7b
+guid: e931ea08b3d009542a24b0cc791dc0a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4735719300073064543
-    second: Bye_bye_ 3_0
+      213: 200192213473628155
+    second: IMG_2961_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bye_bye_ 3_0
+      name: IMG_2961_0
       rect:
         serializedVersion: 2
-        x: 136
+        x: 0
         y: 0
-        width: 2123
-        height: 1640
+        width: 1980
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5801dccc97a8b140800000000000000
-      internalID: 4735719300073064543
+      spriteID: bff05eae1c937c200800000000000000
+      internalID: 200192213473628155
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bye_bye_ 3_0: 4735719300073064543
+      IMG_2961_0: 200192213473628155
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
