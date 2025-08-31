@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Angry_Death 2_0: 976382998461343660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

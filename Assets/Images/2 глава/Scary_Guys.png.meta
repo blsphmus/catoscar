@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scary_Guys_0: -5047435652093659519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
