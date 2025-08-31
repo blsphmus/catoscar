@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 0b904fa1b5ad8c649bbc63e2727f8512
+guid: 3d2591a238b0e084e813156f80cfeda0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6812475384108362867
-    second: Oscar_0
+      213: -5584885811401674293
+    second: IMG_2936_0
+  - first:
+      213: 2339783263853581491
+    second: IMG_2936_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Oscar_0
+      name: IMG_2936_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2360
-        height: 1640
+        x: 935
+        y: 509
+        width: 621
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37c2fde8446ca8e50800000000000000
-      internalID: 6812475384108362867
+      spriteID: bc1b84cc1ff7e72b0800000000000000
+      internalID: -5584885811401674293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_2936_1
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 36
+        width: 1189
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b495655b74987020800000000000000
+      internalID: 2339783263853581491
       vertices: []
       indices: 
       edges: []
@@ -147,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Oscar_0: 6812475384108362867
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
