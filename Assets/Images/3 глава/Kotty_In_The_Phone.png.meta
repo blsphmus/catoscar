@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Kotty_In_The_Phone_0: -367258359090823680
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

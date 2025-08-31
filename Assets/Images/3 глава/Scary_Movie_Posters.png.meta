@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scary_Movie_Posters_0: 5979055741056659320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

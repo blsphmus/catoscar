@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Golden_Cage_0: 3083048396243819807
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
