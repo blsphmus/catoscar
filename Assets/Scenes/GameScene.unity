@@ -3339,11 +3339,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -362.56708, y: 14.047687}
+  scrollPos: {x: -444.10452, y: 73.66484}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.8200002
+  zoom: 0.7900002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -3353,7 +3353,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1647094389}
   selectedCommands:
-  - {fileID: 1647094393}
+  - {fileID: 1647094419}
   variables:
   - {fileID: 1647094133}
   - {fileID: 1647094387}
@@ -9339,6 +9339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996265356}
   - component: {fileID: 1996265357}
+  - component: {fileID: 1996265358}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -9382,6 +9383,36 @@ MonoBehaviour:
   description: 
   effectAudioSource: {fileID: 0}
   voiceAudioSource: {fileID: 0}
+--- !u!114 &1996265358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996265355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: -1
+  indentLevel: 0
+  display: 0
+  stage: {fileID: 0}
+  character: {fileID: 0}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &2056478099
 GameObject:
   m_ObjectHideFlags: 0
